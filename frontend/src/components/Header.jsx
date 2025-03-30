@@ -4,18 +4,21 @@ import { FaUserCircle } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { FaOpencart } from "react-icons/fa6";
 import { IoPersonSharp } from "react-icons/io5";
-import { Link } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import BASE_URL from '../config/BaseUrl';
 import axios from 'axios'
+import{Toaster,toast} from 'react-hot-toast'
+
 
 
 
 const Header = () => {
 
-  const[userid,setUserid]=useState('')
+   const nav=useNavigate()
+  const[adminid,setAdminid]=useState('')
   const[password,setPassword]=useState('')
 
   const [show, setShow] = useState(false);
@@ -23,14 +26,23 @@ const Header = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
-      async function dataSubmit(){
-         
-        let api=`${BASE_URL}/login`
-
-        await axios
-         
-      }
+ 
+         async function dataSubmit(e){
+        e.preventDefault()
+       let api=`${BASE_URL}/login`
+       try {
+       await axios.post(api,{adminid:adminid,password:password}).then((res)=>{
+           console.log(res.data)
+           toast.success('Successfully Login!')
+           localStorage.setItem('admin',res.data.admin.name  )
+           nav('/admin')
+       })
+        
+     
+    } catch (error) {
+      toast.error('invalid')
+    }  
+  }
 
 
   return (
@@ -46,7 +58,7 @@ const Header = () => {
          </div>
         
         <div className='icons'>          
-       <h4>  <FaUserCircle className='user' />login</h4> 
+       <h4>  <FaUserCircle className='user' /></h4> 
        <FaRegHeart />
        <FaOpencart />
      <IoPersonSharp onClick={handleShow} /> 
@@ -68,7 +80,7 @@ const Header = () => {
         <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>User ID</Form.Label>
-        <Form.Control type="text" placeholder="Enter User id" value={userid} onChange={(e)=>{setUserid(e.target.value)}} />
+        <Form.Control type="text" placeholder="Enter User id" value={adminid} onChange={(e)=>{setAdminid(e.target.value)}} />
       
       </Form.Group>
 
@@ -90,6 +102,7 @@ const Header = () => {
          
         </Modal.Footer>
       </Modal>
+      <Toaster/>
     </>
   )
 }

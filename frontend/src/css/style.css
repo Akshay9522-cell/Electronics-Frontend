@@ -1,3 +1,4 @@
+
 .header{
     display: flex;
     justify-content: space-between;
@@ -45,6 +46,9 @@
 .user{
     position: relative;
    top: 0px;
+}
+.user:hover{
+    box-shadow: rgba(100, 100, 181, 0.8) 0px 7px 29px 0px;
 }
 .top{
     background-color: rgb(204, 219, 231);
@@ -135,17 +139,23 @@ nav{
     gap: 5rem;
     justify-content: center;
     align-items: center;
+    position: static;
 }
 nav  a{
     color: rgb(14, 13, 13);
     text-decoration: none;
 }
+nav  a:hover{
+   color: #1d6b70 ;
+   border-bottom: 2px solid #4980ac;
+}
 
 .sidebar{
-    height: 400px;
+    height: fit-content;
     width: 250px;
     background:linear-gradient(#0b3f69,#1d6b70);
-    transform: translateX(0%)
+    transform: translateX(0%);
+     cursor: pointer;    
 }
 
 .dashData{
@@ -167,7 +177,7 @@ nav  a{
 
 .dashData ul li:hover{
 
-    color: #e8f3f6;
+    color: #3ab7da;
     transform: translateY(-10px);
     font-size: 25px;
 }
@@ -265,9 +275,137 @@ nav  a{
     font-size: 45px;
     left: 10px;
 }
+.sec2{
+    background-color: #f2ebeb;
+}
 
+.section2{
+    display: flex;
+    height: 100vh;
+    padding: 50px;
+    gap: 3rem;
+    background-color: #f2ebeb;
+    
+}
 
+.phone{
+    background: url('../images/phone.avif') no-repeat center center/cover;
+    width: 700px;
 
+}
+
+.phone1 {
+    position: absolute;
+    margin: 100px 30px;
+    color: white;
+}
+.phone1 p{
+    font-size: 25px;
+}
+.headphone1 {
+    position: absolute;
+    margin: 100px 30px;
+    color: white;
+}
+.headphone1 p{
+    font-size: 25px;
+}
+ .button2{
+ 
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.900rem - 5px) calc(2.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  border-radius: 30px;
+}
+
+ .button2:hover,
+ .button2:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.button2:hover {
+  transform: translateY(-1px);
+  background:transparent
+}
+
+.button2:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+.headphone{
+    background: url('../images/headphone.avif')no-repeat center center/cover;
+    width: 700px;
+    
+}
+.sec3{
+    
+    background-color: #f2ebeb;
+    padding: 40px;
+    
+}
+
+.sec31{
+   display: flex;
+   justify-content: space-around;
+   padding: 30px;
+   background-color:white;
+}
+.pictext{
+    display: flex;
+    gap: 2rem;
+}
+.pictext h4{
+    font-size: 50px;
+}
+
+/* 
+.card{
+     height: fit-content;
+     width: 500px;
+     border: 1px solid black;    
+}
+
+.img{
+    height: 300px;
+    width: 100px;
+    background-color: #0b3f69;
+     border-radius: 30px;   
+}
+
+.idp{
+     height: fit-content;
+     background: white;
+  
+     
+} */
 
 @media screen and (max-width:769px) {
       

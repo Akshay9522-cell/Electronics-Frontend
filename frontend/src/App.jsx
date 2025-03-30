@@ -1,9 +1,10 @@
 
 import { Route, Routes } from 'react-router-dom'
+import React from 'react'
 import './App.css'
 import Navbar from './navbar/Navbar'
-import Home from './pages/Home'
 import Adminpanel from './admin/Adminpanel'
+import Admin2 from './admin/Admin2'
 
 function App() {
 
@@ -12,17 +13,16 @@ function App() {
     <>
  <Routes>
   <Route path='/' element={<Navbar/>}>
-  <Route index element={<Home/>}/>
-
-  <Route path='home' element={<Home/>}/>
-
+ 
+  
   </Route>
  </Routes>
 
  <Routes>
-  <Route path='dash' element={<Adminpanel/>}>
-
-  </Route>
+ {/* <Route path='admin' element={<Adminpanel/>}> */}
+ 
+ <Route path='admin' element={<Admin2/>}>
+ </Route>
  </Routes>
     </>
   )
