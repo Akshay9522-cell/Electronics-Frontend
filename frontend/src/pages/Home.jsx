@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GiScooter } from "react-icons/gi";
 import { BsBoxSeam } from "react-icons/bs";
 import { SiSpeedypage } from "react-icons/si";
@@ -19,11 +19,55 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import '../css/tail.css'
+import BASE_URL from '../config/BaseUrl';
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { useDispatch } from 'react-redux';
 
 
 
 const Home = () => {
 
+
+  const[show,setShow]=useState([])
+
+  const dis=useDispatch()
+
+  async function productData() {
+      
+      let api=`${BASE_URL}product`
+
+      await axios.get(api).then((res)=>{
+          
+          console.log(res.data)
+          setShow(res.data)
+      })
+  }
+ 
+  useEffect(()=>{
+     productData()
+  },[])
+
+ let ans=show.map((e)=>{
+    return(
+      <>
+        <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={`${BASE_URL}${e.defaultImage}`} />
+      <Card.Body>
+        <Card.Title> Product:{e.name}</Card.Title>
+        <Card.Text>
+           <h5> Desc:{e.description}</h5>
+           <h5>Category:{e.category}</h5>
+           <h5>Company:{e.company}</h5>
+           <h5>Price:{e.price}</h5>
+        </Card.Text>
+        <Button variant="primary" onClick={()=>{dis()}}>Add to cart</Button>
+      </Card.Body>
+    </Card>
+      </>
+    )
+ })
 
   var settings = {
     dots: true,
@@ -58,6 +102,14 @@ const Home = () => {
           <button className='button2'>Shop</button>
         </div>
         </div>
+      </div>
+
+
+      <div className='product'>
+            <div>
+              <h1>akshay</h1>
+            {ans}
+            </div>
       </div>
 
       <div className='sec3 '>

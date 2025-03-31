@@ -60,7 +60,7 @@ const Adminpanel = () => {
     async function submitData(e) {
       e.preventDefault()
 
-      let api=`${BASE_URL}/add`
+      let api=`${BASE_URL}add`
 
       const formData=new FormData()
 
