@@ -11,6 +11,8 @@ import Form from 'react-bootstrap/Form';
 import BASE_URL from '../config/BaseUrl';
 import axios from 'axios'
 import{Toaster,toast} from 'react-hot-toast'
+import { useSelector } from 'react-redux';
+
 
 
 
@@ -18,6 +20,8 @@ import{Toaster,toast} from 'react-hot-toast'
 const Header = () => {
 
    const nav=useNavigate()
+   const val=useSelector(state=>state.mycart.cart)
+   const length=val.length
   const[adminid,setAdminid]=useState('')
   const[password,setPassword]=useState('')
 
@@ -60,7 +64,9 @@ const Header = () => {
         <div className='icons'>          
        <h4>  <FaUserCircle className='user' /></h4> 
        <FaRegHeart />
-       <FaOpencart />
+       <a href="#" onClick={()=>{nav('/cart')}} > <span>  <FaOpencart  /> {length}</span> </a>
+
+      
      <IoPersonSharp onClick={handleShow} /> 
 
 

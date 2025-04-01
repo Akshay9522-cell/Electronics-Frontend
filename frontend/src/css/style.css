@@ -3,7 +3,10 @@
     display: flex;
     justify-content: space-between;
     background-color: aliceblue;
-    height: 80px
+    height: 80px;
+    position: sticky;
+    top: 0;
+    z-index: 9999
 }
 
 .header1{
@@ -134,12 +137,13 @@
 }
 
 nav{
-    height: 40px;
+    height: 50px;
     display: flex;
     gap: 5rem;
     justify-content: center;
     align-items: center;
-    position: static;
+    position: relative;
+    top: 10px;
 }
 nav  a{
     color: rgb(14, 13, 13);
@@ -430,4 +434,13 @@ nav  a:hover{
      .sponser{
         gap: 0;
      }
+}
+
+.Pinfo{
+    display: flex;
+    gap: 3rem;
+}
+.proDetail{
+    display: flex;
+     gap: 4rem;
 }

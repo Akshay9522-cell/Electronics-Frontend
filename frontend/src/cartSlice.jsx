@@ -10,12 +10,55 @@ const cartSlice=createSlice({
     },
 
     reducers:{
-        addTocart:(state,action)=>{
-             console.log(action.payload)
-        }
-    }
-})
+        addTocart:(state, actions)=>{
+            const cartData= state.cart.filter(key=>key.id==actions.payload.id);
+            if (cartData.length>=1)
+            {
+                alert("Product Aleready Added!!!");
+            }
+            else 
+            {
+                state.cart.push(actions.payload);
+            }
+        },
 
-export const{addTocart}=cartSlice.actions
+        qntyIncrease:(state, actions)=>{
+            for (var i=0; i<state.cart.length; i++)
+            {
+              if (state.cart[i].id==actions.payload.id)
+              {
+                  state.cart[i].qnty++;
+              }
+            }
+      },
+
+      qntyDecrease:(state, actions)=>{
+        for (var i=0; i<state.cart.length; i++)
+        {
+          if (state.cart[i].id==actions.payload.id)
+          {
+              if (state.cart[i].qnty<=1)
+              {
+                  alert("Quantity not less than 1 ");
+              }
+              else 
+              {
+                  state.cart[i].qnty--;
+              }
+              
+          }
+        }
+  },
+
+  productRemove:(state, actions)=>{
+    state.cart=state.cart.filter(key=>key.id!=actions.payload.id)
+}
+              
+       
+  },
+
+ 
+})
+export const{addTocart, qntyIncrease, qntyDecrease,productRemove}=cartSlice.actions
 
 export default cartSlice.reducer

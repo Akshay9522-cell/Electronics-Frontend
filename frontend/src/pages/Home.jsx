@@ -24,6 +24,8 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useDispatch } from 'react-redux';
+import { addTocart } from '../cartSlice';
+
 
 
 
@@ -53,7 +55,7 @@ const Home = () => {
     return(
       <>
         <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={`${BASE_URL}${e.defaultImage}`} />
+      <Card.Img variant="top" src={`${BASE_URL}${e.defaultImage}`}  height={300} />
       <Card.Body>
         <Card.Title> Product:{e.name}</Card.Title>
         <Card.Text>
@@ -62,7 +64,7 @@ const Home = () => {
            <h5>Company:{e.company}</h5>
            <h5>Price:{e.price}</h5>
         </Card.Text>
-        <Button variant="primary" onClick={()=>{dis()}}>Add to cart</Button>
+        <Button variant="primary"onClick={()=>{dis(addTocart({id:e._id, name:e.name, description:e.description, category:e.category, company:e.company, price:e.price, defaultImage:e.defaultImage, images:e.images, qnty:1}))}} >Add to cart</Button>
       </Card.Body>
     </Card>
       </>
