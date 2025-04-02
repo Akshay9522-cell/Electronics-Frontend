@@ -38,7 +38,7 @@ const Home = () => {
 
   async function productData() {
       
-      let api=`${BASE_URL}product`
+      let api=`${BASE_URL}electronics/product`
 
       await axios.get(api).then((res)=>{
           
@@ -54,8 +54,11 @@ const Home = () => {
  let ans=show.map((e)=>{
     return(
       <>
+      <div className='cardProduct'>
         <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={`${BASE_URL}${e.defaultImage}`}  height={300} />
+      <Card.Img variant="top" src={`${BASE_URL}${e.defaultImage}`}   />
+      
+          
       <Card.Body>
         <Card.Title> Product:{e.name}</Card.Title>
         <Card.Text>
@@ -67,6 +70,7 @@ const Home = () => {
         <Button variant="primary"onClick={()=>{dis(addTocart({id:e._id, name:e.name, description:e.description, category:e.category, company:e.company, price:e.price, defaultImage:e.defaultImage, images:e.images, qnty:1}))}} >Add to cart</Button>
       </Card.Body>
     </Card>
+    </div>
       </>
     )
  })
@@ -108,8 +112,8 @@ const Home = () => {
 
 
       <div className='product'>
-            <div>
-              <h1>akshay</h1>
+            <div className='cardPro'>
+          
             {ans}
             </div>
       </div>

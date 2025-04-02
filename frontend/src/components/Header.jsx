@@ -4,7 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { FaOpencart } from "react-icons/fa6";
 import { IoPersonSharp } from "react-icons/io5";
-import {  useNavigate } from 'react-router-dom';
+import {  useNavigate,Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -33,7 +33,7 @@ const Header = () => {
  
          async function dataSubmit(e){
         e.preventDefault()
-       let api=`${BASE_URL}/login`
+       let api=`${BASE_URL}electronics/login`
        try {
        await axios.post(api,{adminid:adminid,password:password}).then((res)=>{
            console.log(res.data)
@@ -62,14 +62,14 @@ const Header = () => {
          </div>
         
         <div className='icons'>          
-       <h4>  <FaUserCircle className='user' /></h4> 
+        <Link to="regis"> <h4>  <FaUserCircle className='user' /></h4> </Link> 
        <FaRegHeart />
-       <a href="#" onClick={()=>{nav('/cart')}} > <span>  <FaOpencart  /> {length}</span> </a>
+       <a href="#" onClick={()=>{nav('/cart')}} > <span className='cart2'>  <FaOpencart  /> {length}</span> </a>
 
       
      <IoPersonSharp onClick={handleShow} /> 
 
-
+    
 
 
          </div>

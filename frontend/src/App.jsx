@@ -6,6 +6,8 @@ import Navbar from './navbar/Navbar'
 import Adminpanel from './admin/Adminpanel'
 import Admin2 from './admin/Admin2'
 import AddToCart from './pages/AddToCart'
+import CustRegis from './pages/CustRegis'
+import Home from './pages/Home'
 
 function App() {
 
@@ -14,7 +16,10 @@ function App() {
     <>
  <Routes>
   <Route path='/' element={<Navbar/>}>
- 
+  <Route index element={<Home/>}/>
+
+
+  
  
   
   </Route>
@@ -24,6 +29,7 @@ function App() {
  {/* <Route path='admin' element={<Adminpanel/>}> */}
  
  <Route path='admin' element={<Admin2/>}>
+
 
  </Route>
  </Routes>
@@ -36,7 +42,13 @@ function App() {
  </Route>
  </Routes>
 
+ <Routes>
+ {/* <Route path='admin' element={<Adminpanel/>}> */}
+ 
+ <Route path='regis' element={<CustRegis/>}>
 
+ </Route>
+ </Routes>
     </>
   )
 }

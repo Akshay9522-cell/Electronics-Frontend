@@ -60,7 +60,7 @@ const Admin2 = () => {
     async function submitData(e) {
       e.preventDefault()
 
-      let api=`${BASE_URL}/add`
+      let api=`${BASE_URL}electronics/add`
 
       const formData=new FormData()
 
