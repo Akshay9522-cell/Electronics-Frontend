@@ -82,6 +82,28 @@ const Home = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
+
+
+  
+
+   async function auth() {
+    
+  let token=localStorage.getItem('token')
+  console.log(token)
+       if(token){
+
+         let api=`${BASE_URL}electronics/auth`
+
+         await axios.post(api,null,{headers:{"x-auth-token":token}}).then((res)=>{
+              console.log(res.data)
+         })
+   }
+
+}
+
+useEffect(()=>{
+  auth()
+},[])
   return (
     <>
       <div className='sec2'>

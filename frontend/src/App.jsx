@@ -8,6 +8,7 @@ import Admin2 from './admin/Admin2'
 import AddToCart from './pages/AddToCart'
 import CustRegis from './pages/CustRegis'
 import Home from './pages/Home'
+import Login from './pages/Login'
 
 function App() {
 
@@ -17,38 +18,27 @@ function App() {
  <Routes>
   <Route path='/' element={<Navbar/>}>
   <Route index element={<Home/>}/>
-
-
-  
+  <Route path='regis' element={<CustRegis/>}/>
  
-  
   </Route>
  </Routes>
 
  <Routes>
- {/* <Route path='admin' element={<Adminpanel/>}> */}
- 
  <Route path='admin' element={<Admin2/>}>
-
-
  </Route>
  </Routes>
 
  <Routes>
- {/* <Route path='admin' element={<Adminpanel/>}> */}
- 
  <Route path='cart' element={<AddToCart/>}>
-
  </Route>
  </Routes>
-
  <Routes>
- {/* <Route path='admin' element={<Adminpanel/>}> */}
- 
- <Route path='regis' element={<CustRegis/>}>
+  <Route path='login' element={<Login/>}>
 
- </Route>
+  </Route>
  </Routes>
+
+
     </>
   )
 }

@@ -4,7 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { FaOpencart } from "react-icons/fa6";
 import { IoPersonSharp } from "react-icons/io5";
-import {  useNavigate,Link } from 'react-router-dom';
+import {  useNavigate,Link, Outlet } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -12,6 +12,7 @@ import BASE_URL from '../config/BaseUrl';
 import axios from 'axios'
 import{Toaster,toast} from 'react-hot-toast'
 import { useSelector } from 'react-redux';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 
@@ -61,8 +62,20 @@ const Header = () => {
               <CiSearch className='srch' />
          </div>
         
-        <div className='icons'>          
-        <Link to="regis"> <h4>  <FaUserCircle className='user' /></h4> </Link> 
+        <div className='icons'> 
+
+            <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Dropdown 
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1"><Link to="regis"> <h4>  <FaUserCircle className='user' />For New User</h4> </Link> </Dropdown.Item>
+        <Dropdown.Item href="#/action-2"><Link to="login"> <h4>  <FaUserCircle className='user' />Login</h4> </Link></Dropdown.Item>
+        
+      </Dropdown.Menu>
+    </Dropdown>        
+   
        <FaRegHeart />
        <a href="#" onClick={()=>{nav('/cart')}} > <span className='cart2'>  <FaOpencart  /> {length}</span> </a>
 
@@ -109,6 +122,7 @@ const Header = () => {
         </Modal.Footer>
       </Modal>
       <Toaster/>
+      <Outlet/>
     </>
   )
 }
