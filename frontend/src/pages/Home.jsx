@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { GiScooter } from "react-icons/gi";
 import { BsBoxSeam } from "react-icons/bs";
 import { SiSpeedypage } from "react-icons/si";
@@ -9,12 +9,6 @@ import m3 from '../images/three.avif'
 import m4 from '../images/four.avif'
 import m5 from '../images/five.avif'
 import m6 from '../images/six.avif'
-import m7 from '../images/seven.avif'
-import m8 from '../images/eight.avif'
-import m9 from '../images/nine.avif'
-import m10 from '../images/ten.avif'
-import m11 from '../images/eleven.avif'
-import m12 from '../images/twelve.avif'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -25,15 +19,17 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useDispatch } from 'react-redux';
 import { addTocart } from '../cartSlice';
+import { myContext } from '../../Logincontext';
 
 
 
 
 const Home = () => {
 
+  
 
   const[show,setShow]=useState([])
-
+  const{logedIn,setLogedIn}=useContext(myContext)  
   const dis=useDispatch()
 
   async function productData() {
@@ -96,6 +92,11 @@ const Home = () => {
 
          await axios.post(api,null,{headers:{"x-auth-token":token}}).then((res)=>{
               console.log(res.data)
+
+            localStorage.setItem('name',res.data.name)
+            localStorage.setItem('email',res.data.email)
+            localStorage.setItem('id',res.data._id)
+            setLogedIn(true)
          })
    }
 
@@ -103,7 +104,7 @@ const Home = () => {
 
 useEffect(()=>{
   auth()
-},[])
+},[logedIn])
   return (
     <>
       <div className='sec2'>

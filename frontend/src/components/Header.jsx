@@ -49,6 +49,14 @@ const Header = () => {
     }  
   }
 
+  async function logOut(){
+       
+      localStorage.clear()
+      nav('/')
+  }
+
+
+
 
   return (
     <>
@@ -63,6 +71,18 @@ const Header = () => {
          </div>
         
         <div className='icons'> 
+        <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Dropdown 
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1"> Name: {localStorage.getItem('name')} </Dropdown.Item>
+        <Dropdown.Item href="#/action-2"> Email:{localStorage.getItem("email")}</Dropdown.Item>
+        <Dropdown.Item href="#/action-2"> <button className='button-55' onClick={logOut}  >Logout</button></Dropdown.Item>
+        
+      </Dropdown.Menu>
+    </Dropdown>        
 
             <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">

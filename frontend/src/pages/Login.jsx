@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import BASE_URL from '../config/BaseUrl'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-
+     
+    const nav=useNavigate()
     const[email,setEmail]=useState('')
     const[password,setPassword]=useState('')
 
@@ -15,6 +17,8 @@ const Login = () => {
          await axios.post(api,{email:email,password:password}).then((res)=>{
              console.log(res.data)
              localStorage.setItem('token',res.data.token)
+             nav('/')
+
          })
     }
 
